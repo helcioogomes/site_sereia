@@ -2627,6 +2627,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     })
 })
   </script>
+  <script>
+    document.addEventListener('scroll', function(){
+    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
+    tracker.send('event', {
+'category':'Rolou a barra até o final',
+'action': 'scroll',
+'label': 'Visualizou o form',
+'cd1': 'Source Code'})}})
+  </script>
+  <script>
+    document.addEventListener('scroll', function(){
+    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
+    tracker.send('event', {
+'category':'Rolou a barra até o final',
+'action': 'scroll',
+'label': 'Fim da página',
+'cd1': 'Source Code'})}})
+  </script>
 </body>
 
 </html>
