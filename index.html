@@ -2655,7 +2655,31 @@ tracker.send('event',{
 'cd3': 'Source Code'
 })
 },{once:true})
-  </script> 
+  </script>
+  <script>
+    document.querySelector('button.btn.btn-xl').addEventListener('click', function(){
+
+let invalidName = document.querySelector('.form-control#name').getAttribute('aria-invalid');
+let invalidEmail = document.querySelector('.form-control#email').getAttribute('aria-invalid');
+let invalidPhone = document.querySelector('.form-control#phone').getAttribute('aria-invalid');
+let invalidMessage = document.querySelector('.form-control#message').getAttribute('aria-invalid');
+
+if(invalidName == 'false' && invalidEmail == 'false' && invalidPhone == 'false' && invalidMessage == 'false'){
+mensagem = 'Sucesso!'
+} else {
+    mensagem = 'Falha'
+};
+tracker.send('event', {
+'category': 'Contato',
+'action': 'click para envio',
+'label': 'Formulário Contato',
+'cd1': mensagem,
+'cd3':'Source Code'
+        })
+    }, {once:true}
+);
+ 
+  </script>
   
 </body>
 
