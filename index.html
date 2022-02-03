@@ -2645,6 +2645,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 'label': 'Fim da página',
 'cd1': 'Source Code'})}})
   </script>
+  <script>
+    document.querySelector('#contactForm .row').addEventListener('input', function(e){
+tracker.send('event',{
+'category': 'Contato',
+'action': 'Input em um dos forms',
+'label': 'formulário de contato',
+'cd1': e.target.getAttribute("id"),
+'cd3': 'Source Code'
+})
+},{once:true})
+  </script> 
+  
 </body>
 
 </html>
