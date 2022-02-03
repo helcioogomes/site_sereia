@@ -2603,6 +2603,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
   </script>
 
+  <script>
+    document.querySelectorAll('ul.social-buttons').forEach((el) =>{
+    el.addEventListener('click', (evt) =>{
+    tracker.send('event', {
+    'category':'Redes Sociais',
+    'action': 'click',
+    'label': evt.target.className.split('-')[1],
+    'cd1':'Source Code',
+    'cd2': evt.currentTarget.closest('div').className === 'team-member' ? 'member-social' : 'site-social',
+    'cd3': evt.target.closest('div').querySelector('h4') ? evt.target.closest('div').querySelector('h4').innerText : null
+        })
+    })
+})   
+  </script>
+  <script>
+    document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
+    tracker.send('event', {
+    'category': 'Interação com Menu',
+    'action': 'click',
+    'label': 'visualizando opções do menu',
+    'cd1': 'Source Code'
+    })
+})
+  </script>
 </body>
 
 </html>
