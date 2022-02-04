@@ -2689,13 +2689,13 @@ geral.forEach(item => {
     item.addEventListener('click', (evt) => {
         if(evt.target.tagName === 'A' || evt.target.tagName === 'I') {
             var local = 'Dev';
-            var mediaType = ' ';
+            var mediaType = '';
 
         if (item === geral[3]) {local = 'Site'};
 
         var tagType = evt.target.querySelector = ('i');
         if (tagType === null) {
-            mediaType = evt.target.getAttribute('class');
+            midiaType = evt.target.getAttribute('class');
         }else {
             midiaType = evt.target.querySelector('i').getAttribute('class');
         }
@@ -2705,7 +2705,7 @@ geral.forEach(item => {
             'label': 'click Redes Sociais',
             'cd1': 'Source Code',
             'cd2': geral,
-            'cd3': midiaType.replace('fa fa-', ' ')
+            'cd3': midiaType.replace('fa fa-', '')
         });
         }else{};
     })
