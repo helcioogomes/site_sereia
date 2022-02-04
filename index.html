@@ -2602,8 +2602,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, Math.random() * 12000 + 5000);
     
   </script>
-
+   <script>
+     //TAG 1 - Rolar até o fim da página
+     
+ function rolar (){
+    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
+    tracker.send('event', {
+'category':'Rolou a barra até o final',
+'action': 'scroll',
+'label': 'Fim da Página',
+'cd1': 'Source Code'
+       })
+    document.removeEventListener('scroll', rolar);
+        }
+    };
+    document.addEventListener('scroll', rolar);
+  </script>
   <script>
+    // TAG 2 - Visualizar o Formulário
+   function rolar (){
+    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
+    tracker.send('event', {
+'category':'Rolou a barra até o final',
+'action': 'scroll',
+'label': 'Visualizou o form',
+'cd1': 'Source Code'
+       })
+    document.removeEventListener('scroll', rolar);
+        }
+    };
+    document.addEventListener('scroll', rolar);
+  </script>
+  <script>
+    // TAG 3 - Input no Formulário 
+    document.querySelector('#contactForm .row').addEventListener('input', function(e){
+tracker.send('event',{
+'category': 'Contato',
+'action': 'Input em um dos forms',
+'label': 'formulário de contato',
+'cd1': e.target.getAttribute("id"),
+'cd3': 'Source Code'
+})
+},{once:true})
+  </script>
+  <script>
+    // TAG 4 -  Envio do Formulário
+    document.querySelector('button.btn.btn-xl').addEventListener('click', function(){
+
+let invalidName = document.querySelector('.form-control#name').getAttribute('aria-invalid');
+let invalidEmail = document.querySelector('.form-control#email').getAttribute('aria-invalid');
+let invalidPhone = document.querySelector('.form-control#phone').getAttribute('aria-invalid');
+let invalidMessage = document.querySelector('.form-control#message').getAttribute('aria-invalid');
+
+if(invalidName == 'false' && invalidEmail == 'false' && invalidPhone == 'false' && invalidMessage == 'false'){
+mensagem = 'Sucesso!'
+} else {
+    mensagem = 'Falha'
+};
+tracker.send('event', {
+'category': 'Contato',
+'action': 'click para envio',
+'label': 'Formulário Contato',
+'cd1': mensagem,
+'cd3':'Source Code'
+        })
+    }, {once:true}
+);
+ 
+  </script>
+  <script>
+    // TAG 5 - Interação com o Menu
+    document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
+    tracker.send('event', {
+    'category': 'Interação com Menu',
+    'action': 'click',
+    'label': 'visualizando opções do menu',
+    'cd1': 'Source Code'
+    })
+})
+  </script>   
+  <script>        
+// TAG 6 - Click em redes sociais    
+    
 var geral = document.querySelectorAll('.list-inline.social.buttons');
 geral.forEach(item => {
     item.addEventListener('click', (evt) => {
@@ -2632,69 +2712,7 @@ geral.forEach(item => {
 }) 
   </script>
   <script>
-    document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
-    tracker.send('event', {
-    'category': 'Interação com Menu',
-    'action': 'click',
-    'label': 'visualizando opções do menu',
-    'cd1': 'Source Code'
-    })
-})
-  </script>
-  <script>
-    document.addEventListener('scroll', function(){
-    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
-    tracker.send('event', {
-'category':'Rolou a barra até o final',
-'action': 'scroll',
-'label': 'Visualizou o form',
-'cd1': 'Source Code'})}})
-  </script>
-  <script>
-    document.addEventListener('scroll', function(){
-    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
-    tracker.send('event', {
-'category':'Rolou a barra até o final',
-'action': 'scroll',
-'label': 'Fim da página',
-'cd1': 'Source Code'})}})
-  </script>
-  <script>
-    document.querySelector('#contactForm .row').addEventListener('input', function(e){
-tracker.send('event',{
-'category': 'Contato',
-'action': 'Input em um dos forms',
-'label': 'formulário de contato',
-'cd1': e.target.getAttribute("id"),
-'cd3': 'Source Code'
-})
-},{once:true})
-  </script>
-  <script>
-    document.querySelector('button.btn.btn-xl').addEventListener('click', function(){
-
-let invalidName = document.querySelector('.form-control#name').getAttribute('aria-invalid');
-let invalidEmail = document.querySelector('.form-control#email').getAttribute('aria-invalid');
-let invalidPhone = document.querySelector('.form-control#phone').getAttribute('aria-invalid');
-let invalidMessage = document.querySelector('.form-control#message').getAttribute('aria-invalid');
-
-if(invalidName == 'false' && invalidEmail == 'false' && invalidPhone == 'false' && invalidMessage == 'false'){
-mensagem = 'Sucesso!'
-} else {
-    mensagem = 'Falha'
-};
-tracker.send('event', {
-'category': 'Contato',
-'action': 'click para envio',
-'label': 'Formulário Contato',
-'cd1': mensagem,
-'cd3':'Source Code'
-        })
-    }, {once:true}
-);
- 
-  </script>
-  <script>
+    // TAG 7 - Tempo de Visualização do Site
     document.addEventListener('DOMContentLoaded', function(){
     setTimeout(() => {
         tracker.send('event', {
