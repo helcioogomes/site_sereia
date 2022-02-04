@@ -2604,18 +2604,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 
   <script>
-    document.querySelectorAll('ul.social-buttons').forEach((el) =>{
-    el.addEventListener('click', (evt) =>{
-    tracker.send('event', {
-    'category':'Redes Sociais',
-    'action': 'click',
-    'label': evt.target.className.split('-')[1],
-    'cd1':'Source Code',
-    'cd2': evt.currentTarget.closest('div').className === 'team-member' ? 'member-social' : 'site-social',
-    'cd3': evt.target.closest('div').querySelector('h4') ? evt.target.closest('div').querySelector('h4').innerText : null
-        })
+var geral = document.querySelectorAll('.list-inline.social.buttons');
+geral.forEach(item => {
+    item.addEventListener('click', (evt) => {
+        if(evt.target.tagName === 'A' || evt.target.tagName === 'I') {
+            var local = 'Dev';
+            var mediaType = ' ';
+
+        if (item === geral[3]) {local = 'Site'};
+
+        var tagType = evt.target.querySelector = ('i');
+        if (tagType === null) {
+            mediaType = evt.target.getAttribute('class');
+        }else {
+            mediaType = evt.target.querySelector('i').getAttribute('class');
+        }
+        tracker.send('event', {
+            'category': 'Redes Sociais',
+            'action': 'click',
+            'label': 'click Redes Sociais',
+            'cd1': 'Source Code',
+            'cd2': geral,
+            'cd3': mediaType.replace('fa fa-', ' ')
+        });
+        }else{};
     })
-})   
+}) 
   </script>
   <script>
     document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
