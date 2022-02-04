@@ -2687,7 +2687,7 @@ tracker.send('event', {
 var geral = document.querySelectorAll('.list-inline.social.buttons');
 geral.forEach(item => {
     item.addEventListener('click', (e) => {
-        if(evt.target.tagName === 'A' || evt.target.tagName === 'I') {
+        if(e.target.tagName === 'A' || e.target.tagName === 'I') {
             var local = 'Dev';
             var midiaType = '';
 
