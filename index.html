@@ -2684,14 +2684,14 @@ tracker.send('event', {
   <script>        
 // TAG 6 - Click em redes sociais    
     
-var geral = document.querySelectorAll('.list-inline.social.buttons');
-geral.forEach(item => {
+var todos = document.querySelectorAll('.list-inline.social.buttons');
+todos.forEach(item => {
     item.addEventListener('click', (e) => {
         if(e.target.tagName === 'A' || e.target.tagName === 'I') {
-            var local = 'Dev';
+            var onde = 'Dev';
             var midiaType = '';
 
-        if (item === geral[3]) {local = 'Site'};
+        if (item === todos[3]) {onde = 'Site'};
 
         var tagType = e.target.querySelector = ('i');
         if (tagType === null) {
@@ -2704,7 +2704,7 @@ geral.forEach(item => {
             'action': 'click',
             'label': 'click Redes Sociais',
             'cd1': 'Source Code',
-            'cd2': local,
+            'cd2': onde,
             'cd3': midiaType.replace('fa fa-', '')
         });
         }else{};
