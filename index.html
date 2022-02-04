@@ -2686,18 +2686,18 @@ tracker.send('event', {
     
 var geral = document.querySelectorAll('.list-inline.social.buttons');
 geral.forEach(item => {
-    item.addEventListener('click', (evt) => {
+    item.addEventListener('click', (e) => {
         if(evt.target.tagName === 'A' || evt.target.tagName === 'I') {
             var local = 'Dev';
             var midiaType = '';
 
         if (item === geral[3]) {local = 'Site'};
 
-        var tagType = evt.target.querySelector = ('i');
+        var tagType = e.target.querySelector = ('i');
         if (tagType === null) {
-            midiaType = evt.target.getAttribute('class');
+            midiaType = e.target.getAttribute("class");
         }else {
-            midiaType = evt.target.querySelector('i').getAttribute('class');
+            midiaType = e.target.querySelector('i').getAttribute("class");
         }
         tracker.send('event', {
             'category': 'Redes Sociais',
