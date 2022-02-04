@@ -2620,7 +2620,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
   <script>
     // TAG 2 - Visualizar o Formulário
-   function rolar (){
+   function visualizaForm (){
     if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
     tracker.send('event', {
 'category':'Rolou a barra até o final',
@@ -2628,10 +2628,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 'label': 'Visualizou o form',
 'cd1': 'Source Code'
        })
-    document.removeEventListener('scroll', rolar);
+    document.removeEventListener('scroll', visualizaForm);
         }
     };
-    document.addEventListener('scroll', rolar);
+    document.addEventListener('scroll', visualizaForm);
   </script>
   <script>
     // TAG 3 - Input no Formulário 
@@ -2697,7 +2697,7 @@ geral.forEach(item => {
         if (tagType === null) {
             mediaType = evt.target.getAttribute('class');
         }else {
-            mediaType = evt.target.querySelector('i').getAttribute('class');
+            midiaType = evt.target.querySelector('i').getAttribute('class');
         }
         tracker.send('event', {
             'category': 'Redes Sociais',
@@ -2705,7 +2705,7 @@ geral.forEach(item => {
             'label': 'click Redes Sociais',
             'cd1': 'Source Code',
             'cd2': geral,
-            'cd3': mediaType.replace('fa fa-', ' ')
+            'cd3': midiaType.replace('fa fa-', ' ')
         });
         }else{};
     })
