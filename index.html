@@ -2680,6 +2680,19 @@ tracker.send('event', {
 );
  
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+    setTimeout(() => {
+        tracker.send('event', {
+            'category': 'Tempo de Página',
+            'action': 'Acima de 1 minuto na página',
+            'label': 'Visualizou Página',
+            'cd1': 'Source Code'
+            })
+        },60000)
+})
+
+  </script>
   
 </body>
 
