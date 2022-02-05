@@ -2702,7 +2702,7 @@ tracker.send('event', {
   <script>
       //  TAG 8 - Interação Pop-up 
 
-    document.getElementById("call-me-baby").addEventListener('transition', function () {
+    document.getElementById("call-me-baby").addEventListener('transitionend', function () {
     tracker.send('event', {
     'category' : 'Pop-up da Home',
     'action':'pop-up',
