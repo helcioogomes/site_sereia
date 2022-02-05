@@ -2684,30 +2684,7 @@ tracker.send('event', {
   <script>        
 // TAG 6 - Click em redes sociais     
     
-function socialMedia(e) {
-  if(Array.from(document.querySelectorAll('list-inline.social-buttons li a li')).includes(e.target)){
-    e2 = e.target
-  } else {
-    e2 = e.target.querySelector('i')
-  };
-  if(document.getElementById('team').contains(e.target)){
-    access = 'Developer'
-  } else {
-    access = 'OtherUser'
-  };
-  tracker.send('event', {
-    'category': 'Social Media',
-    'action': 'Social Media Click',
-    'label': 'Social Media Links',
-    'cd1': access,
-    'cd2': e2.className.replace('fa-fa-', ''),
-    'cd3': 'Source Code'
-  })
 
-  document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
-    bot.addEventListener('click', socialMedia)
-  });
-}
   </script>
   <script>
   //  TAG 7 - Tempo de Visualização do Site 
