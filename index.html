@@ -2603,126 +2603,127 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    <script>
     // TAG 1 - Rolar até o fim da página 
      
- function rolar (){
-    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
-    tracker.send('event', {
-'category':'Rolou a barra até o final',
-'action': 'scroll',
-'label': 'Fim da Página',
-'cd1': 'Source Code'
-       })
-    document.removeEventListener('scroll', rolar);
+    function rolar (){
+      if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
+      tracker.send('event', {
+        'category':'Rolou a barra até o final',
+        'action': 'scroll',
+        'label': 'Fim da Página',
+        'cd1': 'Source Code'
+        })
+      document.removeEventListener('scroll', rolar);
         }
-    };
-    document.addEventListener('scroll', rolar);
+      };
+      document.addEventListener('scroll', rolar);
  
    //  TAG 2 - Visualizar o Formulário --> 
    function visualizaForm (){
     if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
     tracker.send('event', {
-'category':'Rolou a barra até o final',
-'action': 'scroll',
-'label': 'Visualizou o form',
-'cd1': 'Source Code'
-       })
+      'category':'Rolou a barra até o final',
+      'action': 'scroll',
+      'label': 'Visualizou o form',
+      'cd1': 'Source Code'
+      })
     document.removeEventListener('scroll', visualizaForm);
-        }
+      }
     };
     document.addEventListener('scroll', visualizaForm);
   
     // TAG 3 - Input no Formulário
     document.querySelector('#contactForm .row').addEventListener('input', function(e){
-tracker.send('event',{
-'category': 'Contato',
-'action': 'Input em um dos forms',
-'label': 'formulário de contato',
-'cd1': e.target.getAttribute("id"),
-'cd3': 'Source Code'
-})
-},{once:true})
+    tracker.send('event',{
+      'category': 'Contato',
+      'action': 'Input em um dos forms',
+      'label': 'formulário de contato',
+      'cd1': e.target.getAttribute("id"),
+      'cd3': 'Source Code'
+      })
+    },{once:true})
   
     // TAG 4 -  Envio do Formulário  
     document.querySelector('button.btn.btn-xl').addEventListener('click', function(){
 
-let invalidName = document.querySelector('.form-control#name').getAttribute('aria-invalid');
-let invalidEmail = document.querySelector('.form-control#email').getAttribute('aria-invalid');
-let invalidPhone = document.querySelector('.form-control#phone').getAttribute('aria-invalid');
-let invalidMessage = document.querySelector('.form-control#message').getAttribute('aria-invalid');
+      let invalidName = document.querySelector('.form-control#name').getAttribute('aria-invalid');
+      let invalidEmail = document.querySelector('.form-control#email').getAttribute('aria-invalid');
+      let invalidPhone = document.querySelector('.form-control#phone').getAttribute('aria-invalid');
+      let invalidMessage = document.querySelector('.form-control#message').getAttribute('aria-invalid');
 
-if(invalidName == 'false' && invalidEmail == 'false' && invalidPhone == 'false' && invalidMessage == 'false'){
-mensagem = 'Sucesso!'
-} else {
-    mensagem = 'Falha'
-};
-tracker.send('event', {
-'category': 'Contato',
-'action': 'click para envio',
-'label': 'Formulário Contato',
-'cd1': mensagem,
-'cd3':'Source Code'
+      if(invalidName == 'false' && invalidEmail == 'false' && invalidPhone == 'false' && invalidMessage == 'false'){
+      mensagem = 'Sucesso!'
+      } else {
+      mensagem = 'Falha'
+      };
+      tracker.send('event', {
+        'category': 'Contato',
+        'action': 'click para envio',
+        'label': 'Formulário Contato',
+        'cd1': mensagem,
+        'cd3':'Source Code'
         })
-    }, {once:true}
-);
+      }, {once:true}
+    );
  
  // TAG 5 - Interação com o Menu 
     document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
-    tracker.send('event', {
-    'category': 'Interação com Menu',
-    'action': 'click',
-    'label': 'visualizando opções do menu',
-    'cd1': 'Source Code'
+      tracker.send('event', {
+      'category': 'Interação com Menu',
+      'action': 'click',
+      'label': 'visualizando opções do menu',
+      'cd1': 'Source Code'
+      })
     })
-})
        
     // TAG 6 - Click em redes sociais     
-var todos = document.querySelectorAll('.list-inline.social-buttons');
-todos.forEach(item => {
-    item.addEventListener('click', (e) => {
-        if(e.target.tagName === 'A' || e.target.tagName === 'I') {
-            var onde = 'Dev';
-            var midiaType = '';
+    var todos = document.querySelectorAll('.list-inline.social-buttons');
+      todos.forEach(item => {
+          item.addEventListener('click', (e) => {
+            if(e.target.tagName === 'A' || e.target.tagName === 'I') {
+              var onde = 'Dev';
+              var midiaType = '';
 
-            if (item === todos[3]) {onde = 'Site'};
+              if (item === todos[3]) {onde = 'Site'};
 
-            var tagType = e.target.querySelector = ('i');
-            if (tagType === null) {
-                midiaType = e.target.getAttribute("class");
-            } else {
-                midiaType = e.target.querySelector('i').getAttribute("class");
-            }
-            tracker.send('event', {
-                'category': 'Redes Sociais',
-                'action': 'click',
-                'label': 'click Redes Sociais',
-                'cd1': 'Source Code',
-                'cd2': onde,
-                'cd3': midiaType.replace("fa fa-", "")
-            });
-        } else {}
-    })
-}) 
+              var tagType = e.target.querySelector = ('i');
+              if (tagType === null) {
+                  midiaType = e.target.getAttribute("class");
+              } else {
+                  midiaType = e.target.querySelector('i').getAttribute("class");
+              }
+                tracker.send('event', {
+                    'category': 'Redes Sociais',
+                    'action': 'click',
+                    'label': 'click Redes Sociais',
+                    'cd1': 'Source Code',
+                    'cd2': onde,
+                    'cd3': midiaType.replace("fa fa-", "")
+                });
+              } else {}
+      })
+    }) 
 
    //  TAG 7 - Tempo de Visualização do Site 
     document.addEventListener('DOMContentLoaded', function(){
-    setTimeout(() => {
-        tracker.send('event', {
-            'category': 'Tempo de Página',
-            'action': 'Acima de 1 minuto na página',
-            'label': 'Visualizou Página',
-            'cd1': 'Source Code'
-            })
-        },60000)
-})
+      setTimeout(() => {
+          tracker.send('event', {
+              'category': 'Tempo de Página',
+              'action': 'Acima de 1 minuto na página',
+              'label': 'Visualizou Página',
+              'cd1': 'Source Code'
+          })
+      },60000)
+    })
   
       //  TAG 8 - Interação Pop-up 
 
     document.getElementById("call-me-baby").addEventListener('transitionend', function () {
-    tracker.send('event', {
-    'category' : 'Pop-up da Home',
-    'action':'pop-up',
-    'label': 'não restrição do pop-up',
-    'cd1':'Source Code'
-})})
+      tracker.send('event', {
+        'category' : 'Pop-up da Home',
+        'action':'pop-up',
+        'label': 'não restrição do pop-up',
+        'cd1':'Source Code'
+      })
+    })
   </script>
 </body>
 
