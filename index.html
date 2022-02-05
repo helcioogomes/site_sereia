@@ -2708,7 +2708,7 @@ document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
 });
 document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
     bot.addEventListener('click', socialMedia)
-});
+});}
   </script>
   <script>
   <!--  TAG 7 - Tempo de Visualização do Site --> 
@@ -2722,9 +2722,18 @@ document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
             })
         },60000)
 })
-
   </script>
-  
+  <script>
+      <!--  TAG 8 - Interação Pop-up --> 
+
+    document.getElementById("call-me-baby").addEventListener('transition', function () {
+    tracker.send('event', {
+    'category' : 'Pop-up da Home',
+    'action':'pop-up',
+    'label': 'não restrição do pop-up',
+    'cd1':'Source Code'
+})})
+  </script>
 </body>
 
 </html>
