@@ -2603,7 +2603,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
   </script>
    <script>
-     //TAG 1 - Rolar até o fim da página
+    <!-- TAG 1 - Rolar até o fim da página --> 
      
  function rolar (){
     if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
@@ -2619,7 +2619,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('scroll', rolar);
   </script>
   <script>
-    // TAG 2 - Visualizar o Formulário
+   <!--  TAG 2 - Visualizar o Formulário --> 
    function visualizaForm (){
     if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
     tracker.send('event', {
@@ -2634,7 +2634,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('scroll', visualizaForm);
   </script>
   <script>
-    // TAG 3 - Input no Formulário 
+    <!-- TAG 3 - Input no Formulário --> 
     document.querySelector('#contactForm .row').addEventListener('input', function(e){
 tracker.send('event',{
 'category': 'Contato',
@@ -2646,7 +2646,7 @@ tracker.send('event',{
 },{once:true})
   </script>
   <script>
-    // TAG 4 -  Envio do Formulário
+    <!-- TAG 4 -  Envio do Formulário --> 
     document.querySelector('button.btn.btn-xl').addEventListener('click', function(){
 
 let invalidName = document.querySelector('.form-control#name').getAttribute('aria-invalid');
@@ -2671,7 +2671,7 @@ tracker.send('event', {
  
   </script>
   <script>
-    // TAG 5 - Interação com o Menu
+ <!-- TAG 5 - Interação com o Menu --> 
     document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
     tracker.send('event', {
     'category': 'Interação com Menu',
@@ -2682,37 +2682,36 @@ tracker.send('event', {
 })
   </script>   
   <script>        
-// TAG 6 - Click em redes sociais    
+<!-- TAG 6 - Click em redes sociais -->    
     
-var todos = document.querySelectorAll('.list-inline.social.buttons');
-todos.forEach(item => {
-    item.addEventListener('click', (e) => {
-        if(e.target.tagName === 'a' || e.target.tagName === 'i') {
-            var onde = 'Dev';
-            var midiaType = '';
-
-        if (item === todos[3]) {onde = 'Site'};
-
-        var tagType = e.target.querySelector = ('i');
-        if (tagType === null) {
-            midiaType = e.target.getAttribute("class");
-        }else {
-            midiaType = e.target.querySelector('i').getAttribute("class");
-        }
-        tracker.send('event', {
-            'category': 'Redes Sociais',
-            'action': 'click',
-            'label': 'click Redes Sociais',
-            'cd1': 'Source Code',
-            'cd2': onde,
-            'cd3': midiaType.replace("fa fa-", "")
-        });
-        } else{};
-    })
-}) 
+function socialMedia(evt) {
+if(Array.from(document.querySelectorAll('list-inline.social-buttons li a li')).includes(evt.target)){
+    evt2 = evt.target
+} else {
+    evt2 = evt.target.querySelector('i')
+};
+if(document.getElementById('team').contains(evt.target)){
+    access = 'Developer'
+} else {
+    access = 'OtherUser'
+};
+tracker.send('event', {
+    'category': 'Social Media',
+    'action': 'Social Media Click',
+    'label': 'Social Media Links',
+    'cd1': access,
+    'cd2': evt2.className.replace('fa-fa-', ''),
+    'cd3': 'Source Code'
+})
+document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
+    bot.removeEventListener('click', socialMedia)
+});
+document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
+    bot.addEventListener('click', socialMedia)
+});
   </script>
   <script>
-    // TAG 7 - Tempo de Visualização do Site
+  <!--  TAG 7 - Tempo de Visualização do Site --> 
     document.addEventListener('DOMContentLoaded', function(){
     setTimeout(() => {
         tracker.send('event', {
