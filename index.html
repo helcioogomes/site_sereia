@@ -2675,7 +2675,7 @@ tracker.send('event', {
 })
        
     // TAG 6 - Click em redes sociais     
-var todos = document.querySelectorAll('ul.list-inline.social-buttons');
+var todos = document.querySelectorAll('.list-inline.social-buttons');
 todos.forEach(item => {
     item.addEventListener('click', (e) => {
         if(e.target.tagName === 'A' || e.target.tagName === 'I') {
@@ -2687,7 +2687,7 @@ todos.forEach(item => {
             var tagType = e.target.querySelector = ('i');
             if (tagType === null) {
                 midiaType = e.target.getAttribute("class");
-            }else {
+            } else {
                 midiaType = e.target.querySelector('i').getAttribute("class");
             }
             tracker.send('event', {
@@ -2698,7 +2698,7 @@ todos.forEach(item => {
                 'cd2': onde,
                 'cd3': midiaType.replace("fa fa-", "")
             });
-        } else{}
+        } else {}
     })
 }) 
 
