@@ -2551,7 +2551,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
 
-
     /*When clicking on Full hide fail/success boxes */
     $('#name').focus(function() {
       $('#success').html('');
@@ -2593,7 +2592,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var element = document.getElementById('call-me-baby');
       element.style.right = '20px';
 
-
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "popup aleatório apareceu",
@@ -2617,8 +2615,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
     };
     document.addEventListener('scroll', rolar);
-  </script>
-  <script>
+ 
    //  TAG 2 - Visualizar o Formulário --> 
    function visualizaForm (){
     if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
@@ -2632,8 +2629,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
     };
     document.addEventListener('scroll', visualizaForm);
-  </script>
-  <script>
+  
     // TAG 3 - Input no Formulário
     document.querySelector('#contactForm .row').addEventListener('input', function(e){
 tracker.send('event',{
@@ -2644,8 +2640,7 @@ tracker.send('event',{
 'cd3': 'Source Code'
 })
 },{once:true})
-  </script>
-  <script>
+  
     // TAG 4 -  Envio do Formulário  
     document.querySelector('button.btn.btn-xl').addEventListener('click', function(){
 
@@ -2669,8 +2664,6 @@ tracker.send('event', {
     }, {once:true}
 );
  
-  </script>
-  <script>
  // TAG 5 - Interação com o Menu 
     document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
     tracker.send('event', {
@@ -2680,14 +2673,36 @@ tracker.send('event', {
     'cd1': 'Source Code'
     })
 })
-  </script>   
-  <script>        
-// TAG 6 - Click em redes sociais     
-    
+       
+    // TAG 6 - Click em redes sociais     
+var todos = document.querySelectorAll('.list-inline.social.buttons');
+todos.forEach(item => {
+    item.addEventListener('click', (e) => {
+        if(e.target.tagName === 'A' || e.target.tagName === 'I') {
+            var onde = 'Dev';
+            var midiaType = '';
 
-  </script>
-  <script>
-  //  TAG 7 - Tempo de Visualização do Site 
+            if (item === todos[3]) {onde = 'Site'};
+
+            var tagType = e.target.querySelector = ('i');
+            if (tagType === null) {
+                midiaType = e.target.getAttribute("class");
+            }else {
+                midiaType = e.target.querySelector('i').getAttribute("class");
+            }
+            tracker.send('event', {
+                'category': 'Redes Sociais',
+                'action': 'click',
+                'label': 'click Redes Sociais',
+                'cd1': 'Source Code',
+                'cd2': onde,
+                'cd3': midiaType.replace("fa fa-", "")
+            });
+        } else{};
+    })
+}) 
+
+   //  TAG 7 - Tempo de Visualização do Site 
     document.addEventListener('DOMContentLoaded', function(){
     setTimeout(() => {
         tracker.send('event', {
@@ -2698,8 +2713,7 @@ tracker.send('event', {
             })
         },60000)
 })
-  </script>
-  <script>
+  
       //  TAG 8 - Interação Pop-up 
 
     document.getElementById("call-me-baby").addEventListener('transitionend', function () {
