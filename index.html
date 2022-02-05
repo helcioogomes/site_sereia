@@ -2665,14 +2665,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     );
  
  // TAG 5 - Interação com o Menu 
-    document.querySelector('div.navbar-header.page-scroll').addEventListener('click', function(){
+    document.querySelector('.nav.navbar-nav.navbar-right').addEventListener('click', function(){
       tracker.send('event', {
       'category': 'Interação com Menu',
       'action': 'click',
       'label': 'visualizando opções do menu',
       'cd1': 'Source Code'
       })
-    })
+})
        
     // TAG 6 - Click em redes sociais     
     var todos = document.querySelectorAll('.list-inline.social-buttons');
