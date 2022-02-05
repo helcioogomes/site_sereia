@@ -2690,19 +2690,19 @@ function socialMedia(e) {
   } else {
     e2 = e.target.querySelector('i')
   };
-if(document.getElementById('team').contains(e.target)){
+  if(document.getElementById('team').contains(e.target)){
     access = 'Developer'
   } else {
     access = 'OtherUser'
   };
-tracker.send('event', {
+  tracker.send('event', {
     'category': 'Social Media',
     'action': 'Social Media Click',
     'label': 'Social Media Links',
     'cd1': access,
     'cd2': e2.className.replace('fa-fa-', ''),
     'cd3': 'Source Code'
-})
+  })
 
   document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
     bot.addEventListener('click', socialMedia)
