@@ -2684,13 +2684,13 @@ tracker.send('event', {
   <script>        
 <!-- TAG 6 - Click em redes sociais -->    
     
-function socialMedia(evt) {
-if(Array.from(document.querySelectorAll('list-inline.social-buttons li a li')).includes(evt.target)){
-    evt2 = evt.target
+function socialMedia(e) {
+if(Array.from(document.querySelectorAll('list-inline.social-buttons li a li')).includes(e.target)){
+    e2 = e.target
 } else {
-    evt2 = evt.target.querySelector('i')
+    e2 = e.target.querySelector('i')
 };
-if(document.getElementById('team').contains(evt.target)){
+if(document.getElementById('team').contains(e.target)){
     access = 'Developer'
 } else {
     access = 'OtherUser'
@@ -2700,7 +2700,7 @@ tracker.send('event', {
     'action': 'Social Media Click',
     'label': 'Social Media Links',
     'cd1': access,
-    'cd2': evt2.className.replace('fa-fa-', ''),
+    'cd2': e2.className.replace('fa-fa-', ''),
     'cd3': 'Source Code'
 })
 document.querySelectorAll('list-inline.social-buttons a').forEach(bot => {
