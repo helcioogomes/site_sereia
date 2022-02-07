@@ -2601,6 +2601,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
   </script>
    <script>
+     // TAG de Exemplo
+     document.querySelector('a.page-scroll.btn.btn-xl').addEventListener('click', function(){
+      tracker.send('event', {
+        'category': 'Orçamento',
+        'action': 'click',
+        'label': 'Faça um orçamento',
+        'cd1': 'Source Code'
+        })
+      })
+     
+     
     // TAG 1 - Rolar até o fim da página 
      
     function rolar (){
