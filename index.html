@@ -2628,18 +2628,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.addEventListener('scroll', rolar);
  
    //  TAG 2 - Visualizar o Formulário --> 
-   function visualizaForm (){
-    if (window.scrollY == document.body.scrollHeight - window.innerHeight) {
+  var FormElement = document.querySelector('section#contact')
+    FormElement.addEventListener('mouseup', function(){
+    console.log('visualizou o form')
     tracker.send('event', {
       'category':'Rolou a barra até o final',
       'action': 'scroll',
-      'label': 'Visualizou o form',
+      'label': 'Form Visualizado',
       'cd1': 'Source Code'
       })
-    document.removeEventListener('scroll', visualizaForm);
-      }
-    };
-    document.addEventListener('scroll', visualizaForm);
+})
   
     // TAG 3 - Input no Formulário
     document.querySelector('#contactForm .row').addEventListener('input', function(e){
